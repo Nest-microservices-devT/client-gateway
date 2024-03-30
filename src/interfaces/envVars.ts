@@ -1,8 +1,4 @@
 export interface EnvVars {
   PORT: number;
-  DATABASE_URL: string;
-  PRODUCTS_MICROSERVICE_HOST: string;
-  PRODUCTS_MICROSERVICE_PORT: number;
-  ORDERS_MICROSERVICE_HOST: string;
-  ORDERS_MICROSERVICE_PORT: number;
+  NATS_SERVERS: string;
 }
