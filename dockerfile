@@ -9,4 +9,4 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 3004
+EXPOSE 3000
