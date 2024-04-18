@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger, RequestMethod, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { envs } from './config/index';
 import { RpcCustomExceptionFilter } from './common';
@@ -7,7 +7,14 @@ import { RpcCustomExceptionFilter } from './common';
 async function bootstrap() {
   const logger = new Logger('Bootstrap Client Gateway');
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api', {
+    exclude: [
+      {
+        path: '',
+        method: RequestMethod.GET,
+      },
+    ],
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
